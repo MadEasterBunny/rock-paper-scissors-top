@@ -9,4 +9,9 @@ const getComputerChoice = () => {
     return choices[choiceInx];
 }
 
-console.log(getComputerChoice());
+const getHumanChoice = () => {
+    const choice = prompt("Enter either rock, paper or scissors", "");
+    return choice;
+}
+
+console.log(getHumanChoice());
