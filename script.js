@@ -13,16 +13,47 @@ const getHumanChoice = () => {
     return choice.toLowerCase();
 }
 
-const playRound = (currentHumanScore, currentComputerScore) => {
-    humanChoice = getHumanChoice();
-    computerChoice = getComputerChoice();
+// const playRound = (currentHumanScore, currentComputerScore) => {
+//     humanChoice = getHumanChoice();
+//     computerChoice = getComputerChoice();
 
+//     if(
+//         humanChoice === "rock" && computerChoice === "scissors"||
+//         humanChoice === "paper" && computerChoice === "rock"||
+//         humanChoice === "scissors" && computerChoice === "paper") {
+//         console.log("Player wins!");
+//         return [currentHumanScore + 1, currentComputerScore];
+//     } else if (
+//         humanChoice === "rock" && computerChoice === "paper" ||
+//         humanChoice === "paper" && computerChoice === "scissors" ||
+//         humanChoice === "scissors" && computerChoice === "rock"
+//     ) {
+//         if(computerChoice === "rock"){
+//             console.log("You lose! Rock beats Scissors");
+//         } else if (computerChoice === "paper") {
+//             console.log("You lose! Paper beats Rock");
+//         } else {
+//             console.log("You lose! Scissors beats Paper");
+//         }
+//         return [currentHumanScore, currentComputerScore + 1];
+//     } else {
+//         console.log("It's a tie!")
+//         return [currentHumanScore, currentComputerScore];
+//     }
+// }
+
+const playGame = () => {
+    let rounds = 0;
+    let humanScore = 0;
+    let computerScore = 0;
+
+    const playRound = (humanChoice, computerChoice) => {
     if(
         humanChoice === "rock" && computerChoice === "scissors"||
         humanChoice === "paper" && computerChoice === "rock"||
         humanChoice === "scissors" && computerChoice === "paper") {
         console.log("Player wins!");
-        return [currentHumanScore + 1, currentComputerScore];
+        return humanScore++;
     } else if (
         humanChoice === "rock" && computerChoice === "paper" ||
         humanChoice === "paper" && computerChoice === "scissors" ||
@@ -35,22 +66,17 @@ const playRound = (currentHumanScore, currentComputerScore) => {
         } else {
             console.log("You lose! Scissors beats Paper");
         }
-        return [currentHumanScore, currentComputerScore + 1];
+        return computerScore++;
     } else {
         console.log("It's a tie!")
-        return [currentHumanScore, currentComputerScore];
+        return humanScore, computerScore;
     }
 }
 
-const playGame = () => {
-    let rounds = 0;
-    let humanScore = 0;
-    let computerScore = 0;
-
     while(rounds < 5) {
-        const [newHumanScore, newComputerScore] = playRound(humanScore, computerScore);
-        humanScore = newHumanScore;
-        computerScore = newComputerScore;
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice);
         rounds++;
         console.log(`Round ${rounds} scores: Human ${humanScore}, Computer ${computerScore}`);
     }
