@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 
 const getRandomNum = num =>{
     return Math.floor(Math.random() * num);
